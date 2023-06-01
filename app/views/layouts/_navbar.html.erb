@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en"style="
+    font-size: medium;
+">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> </link>
+      
+</head>
+<style>
+.username {
+padding-right: 10px;
+padding-top: 5px;
+}
+
+.navbar-brand{
+  padding-right: 10px;
+  padding-top: 15px;
+  font-size: medium;
+  color: crimson;
+}
+
+a{
+  text-decoration:none;
+}
+.bg-light{
+  
+  background-color:rgb(33 183 162) !important;
+}
+.navbar-nav me-auto mb-2 mb-lg-0{
+  padding-left: 10px;
+  padding-right: 15px;
+}
+a{
+  margin-right: 0px;
+  margin-left: 10px;
+}
+
+.so{  
+  padding-top: 10px;
+
+}
+
+.uc{  
+padding-top: 10px;
+
+}
+.btn btn-primary{
+  padding-bottom: 4px;
+  padding-top: 4px;
+  margin-top: 5px;
+}
+
+.navbar-nav{
+  padding-top: 5px;
+}
+
+.si{
+  padding-top: 15px;}
+
+  .bg {
+    background: #FFFFFF;
+}
+  .bg-black {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-black-rgb),var(--bs-bg-opacity))!important;
+}
+</style>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light ">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent" style="
+          font-size: large;
+          color: crimson;
+          ">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+            <div class="active">
+            <a  <%= 'class=p' if current_page?(root_path) %>  <%=  link_to users_path do %>
+              <i class='fa fa-user-home'></i> User
+              <% end %> 
+            </a>
+    
+            <a <%= 'class=p' if current_page?(posts_path) %>  <%= link_to posts_path do %>
+                  <i class='fa fa-user-circle1'></i> Photos
+                  <% end %> 
+            </a>
+              
+        </div>  
+
+          
+            </ul>
+            
+            <ul class="navbar-nav">
+            <% if user_signed_in? %>
+             <i class="fa fa-user-circle-o uc" aria-hidden="true"></i>
+            <div class="username"><%=link_to current_user.user_name,root_path(current_user)%>
+            </div> 
+            
+            <i class="fa fa-sign-out so"></i>
+            <%= button_to "Log out", destroy_user_session_path, method: :delete, class:"btn btn-primary btn-sm"%> 
+            <% else %>
+
+            <i class="fa fa-sign-in si"></i>
+            <%= link_to "Login", new_user_session_path, class:"btn btn-primary btn-sm"%> 
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+      
+       
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
+

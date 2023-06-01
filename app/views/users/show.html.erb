@@ -1,0 +1,17 @@
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<% if user_signed_in? %>
+  <% if current_user.following?(@user) %>
+    <%= link_to 'Unfollow', user_follow_path(@user), method: :delete %>
+  <% else %>
+    <%= link_to 'Follow', user_follows_path(@user), method: :post %>
+  <% end %>
+<% end %>
