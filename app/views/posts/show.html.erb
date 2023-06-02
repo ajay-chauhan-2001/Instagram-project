@@ -14,9 +14,20 @@ img{
 <p> <%= image_tag @post.image.url %></p>
 <p>Caption: <%= @post.caption %></p>
 <p>Likes: <%= @post.likes.count %></p>
+<td>Owner:<%=@post.user.user_name %></h3>
+<p>Posted : <%= @post.posted_minutes_ago %> minutes ago</p>
 
 <%= button_to 'Like', like_post_path(@post), method: :post unless current_user.likes?(@post) %>
 <%= button_to 'Unlike', unlike_post_path(@post), method: :delete if current_user.likes?(@post) %>
+
+<h2>Comments</h2>
+<% @post.comments.each do |comment| %>
+    <%= render @post.comments %>
+
+<% end %>
+
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>
 
 
 </body>
