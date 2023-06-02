@@ -1,4 +1,26 @@
-<h1> Photo</h1>
-puts "@post.image.url" , "ubbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
-<%= image_tag(@post.image.url, alt: 'Image') if @post.image? %>
+<html>
+<body>
+<style>
+img{
+  
+    width: 250px;
+    height: 200px;
 
+}
+</style>
+<h1>Photo Details</h1>
+
+<p>Images </p>
+<p> <%= image_tag @post.image.url %></p>
+<p>Caption: <%= @post.caption %></p>
+<p>Likes: <%= @post.likes.count %></p>
+
+<%= button_to 'Like', like_post_path(@post), method: :post unless current_user.likes?(@post) %>
+<%= button_to 'Unlike', unlike_post_path(@post), method: :delete if current_user.likes?(@post) %>
+
+
+</body>
+</html> 
+        
+        
+   
